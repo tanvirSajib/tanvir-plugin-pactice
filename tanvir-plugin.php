@@ -22,43 +22,7 @@
 
 // include "files/users.php";
 
-register_activation_hook( __FILE__, 'wp_learn_add_caps');
-function wp_learn_add_caps() {
-    $editor_role = get_role( 'editor' );
-
-    $editor_role->add_cap( 'activate_plugins' );
-    $editor_role->add_cap( 'update_plugins' );
-}
-
-
-register_deactivation_hook( __FILE__, 'wp_learn_remove_caps');
-function wp_learn_remove_caps() {
-    $editor_role = get_role( 'editor' );
-    $editor_role->remove_cap( 'activate_plugins' );
-    $editor_role->remove_cap( 'update_plugins' );
-}
-
-
-add_action( 'admin_menu', 'wp_learn_submenu', 11 );
-function wp_learn_submenu(){
-    add_submenu_page(
-        'tools.php',
-        'Wp learn capabilites',
-        'Wp learn cpabilites',
-        'manage_options',
-        'wp_learn_admin',
-        'wp_learn_render_admin_page'
-    );
-}
-
-
-function wp_learn_render_admin_page() {
-    $role = get_role( 'editor' );
-    echo '<pre>';
-    print_r( $role );
-    echo '</pre>';
-}
-
+include "files/ajax_basic.php";
 
 
 

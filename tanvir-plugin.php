@@ -25,6 +25,16 @@
 include "files/ajax_basic.php";
 
 
+// How It Works
+// When the button is clicked, JavaScript sends an AJAX request to admin-ajax.php.
+
+// WordPress routes the request to the tanvir_ajax_handler function.
+
+// The PHP function processes the request and returns a response.
+
+// JavaScript updates the DOM with the response.
+
+
 
 
 

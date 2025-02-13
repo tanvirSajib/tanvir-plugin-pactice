@@ -3,7 +3,7 @@
 add_action( 'wp_enqueue_scripts', 'tanvir_ajax_script' );
 
 function tanvir_ajax_script(){
-    
+
     wp_enqueue_script(
         'tanvir-ajax-script',
         plugin_dir_url(__FILE__) . '../js/tanvir-ajax-script.js',
@@ -24,6 +24,19 @@ function tanvir_ajax_script(){
     );
 
     
+}
+
+
+
+
+// handle ajax request
+
+add_action( 'wp_ajax_tanvir_ajax_action', 'tanvir_ajax_handler' );
+
+function tanvir_ajax_handler(){
+    check_ajax_referer('tanvir_ajax_nonce', 'nonce');
+
+    var_dump($_POST);
 }
 
 ?>
